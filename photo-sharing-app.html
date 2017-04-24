@@ -1,0 +1,64 @@
+<head>
+  <title>photosss</title>
+</head>
+
+<body>
+  <span class="pull-right">{{> loginButtons align="right"}}</span>
+
+  <h3>Photosss</h3>  
+
+  {{#each photos}}
+    {{> photoCard}}
+  {{/each}}
+
+  {{#if currentUser}}
+    {{> postPhoto}}
+  {{else}}
+    <div class="well">
+      Log in to post a photo!
+    </div>
+  {{/if}}
+
+  <br />
+</body>
+
+<template name="photoCard">
+  <div class="thumbnail">
+    <img src="{{data}}" />
+    <div class="caption">
+      {{caption}}
+      <em>by {{username}}</em>
+
+      {{#if currentUser}}
+        <a href="#" class="like btn btn-sm btn-primary pull-right">
+          <i class="fa fa-heart"></i> {{likedBy.length}}
+        </a>
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="postPhoto">
+  <form class="add-photo">
+    <h3>Post a photo</h3>
+    <p>
+      <a href="#" class="take-photo btn btn-primary">
+        <i class="fa fa-camera"></i>
+        Take a photo
+      </a>
+    </p>
+
+    {{#if unsubmittedPhoto}}
+      <p>
+        <img src="{{unsubmittedPhoto}}" class="unsubmitted-photo" />
+      </p>
+    {{/if}}
+
+    <p>
+      <input type="text" name="caption" class="form-control"
+        placeholder="type a caption for your new photo!"/>
+    </p>
+
+    <button class="btn btn-success">Post</button>
+  </form>
+</template>

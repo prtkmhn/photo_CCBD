@@ -1,0 +1,19 @@
+/* CSS declarations go here */
+
+body {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.photo-card {
+  margin-top: 20px;
+}
+
+.unsubmitted-photo {
+  width: 50%;
+}
+
+.camera-popup img.photo-preview {
+  margin-bottom: 10px;
+  width: 100%;
+}
